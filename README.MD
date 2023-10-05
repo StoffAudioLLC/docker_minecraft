@@ -8,5 +8,6 @@ Minecraft 1.18 == Java 17
 # Instructions:
 
 * Add minecraft server to the Minecraft folder with a Start.sh directly inside
-* set the Minecraft version and Java version in the config.ini
-
+* set the Minecraft version and Java version in term
+* ssh into the image by porting 22 to whatever port you like
+* ssh user: mc, password: minecraft

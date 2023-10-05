@@ -1,16 +1,11 @@
-@echo off
+
 setlocal enabledelayedexpansion
+echo Minecraft <1.12 == Java 7 
+echo Minecraft 1.12-1.17 == Java 8
+echo Minecraft 1.18 == Java 17
 
-:: Set the path to the config.ini file
-set "config_file=config.ini"
+REM Enter your java version as a number: 
+set /p "javav=Enter your java version as a number: "
 
-:: Read and parse the config.ini file
-for /f "tokens=1,2 delims==" %%A in (%config_file%) do (
-    set "key=%%A"
-    set "value=%%B"
-    
-    if "!key!"=="java" (
-        set "javav=!value!"
-    )
-)
-docker build --build-arg JAVAV=!javav! .
+docker build --build-arg JAVAV=!javav! . -t stoffaudio/docker_minecraft
+docker run -it --entrypoint bash -p 25565:25565 -p 222:22 stoffaudio/docker_minecraft
